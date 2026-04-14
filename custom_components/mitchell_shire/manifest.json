@@ -1,0 +1,11 @@
+{
+  "domain": "mitchell_shire",
+  "name": "Mitchell Shire Council",
+  "config_flow": true,
+  "documentation": "https://github.com/jamesd/mitchell_shire",
+  "issue_tracker": "https://github.com/jamesd/mitchell_shire/issues",
+  "requirements": [],
+  "codeowners": [],
+  "iot_class": "cloud_polling",
+  "version": "1.0.0"
+}

@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mitchell Shire Council",
+        "description": "Select the zone whose coordinates will be used to look up your bin schedule. Usually this is **zone.home**.\n\n*This integration is not affiliated with or endorsed by Mitchell Shire Council.*",
+        "data": {
+          "zone": "Zone",
+          "bin_scan_interval": "Bin refresh interval",
+          "enable_events": "Enable council events",
+          "enable_news": "Enable council news"
+        },
+        "data_description": {
+          "zone": "The Home Assistant zone whose latitude and longitude will be sent to the Mitchell Shire Council API.",
+          "bin_scan_interval": "How often to refresh bin collection schedules (hours). Bin schedules rarely change, so a longer interval is fine. Default is 50 hours.",
+          "enable_events": "Create sensors and a calendar for upcoming Mitchell Shire council events.",
+          "enable_news": "Create a sensor for the latest Mitchell Shire council news."
+        }
+      }
+    },
+    "error": {
+      "zone_not_found": "The selected zone entity was not found in Home Assistant.",
+      "zone_no_coordinates": "The selected zone does not have latitude/longitude attributes."
+    },
+    "abort": {
+      "already_configured": "This zone is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mitchell Shire Council Options",
+        "data": {
+          "bin_scan_interval": "Bin refresh interval",
+          "enable_events": "Enable council events",
+          "enable_news": "Enable council news"
+        },
+        "data_description": {
+          "bin_scan_interval": "How often to refresh bin collection schedules (hours). Default is 50 hours.",
+          "enable_events": "Create sensors and a calendar for upcoming Mitchell Shire council events.",
+          "enable_news": "Create a sensor for the latest Mitchell Shire council news."
+        }
+      }
+    }
+  }
+}

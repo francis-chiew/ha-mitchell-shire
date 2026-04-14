@@ -91,11 +91,19 @@ Bin sensors use the `DATE` device class and include these extra attributes:
 
 Setup requires only a zone entity. The integration uses the zone's latitude and longitude to query the Mitchell Shire Council API.
 
-| Setting | Description |
-|---------|-------------|
-| **Zone** | A Home Assistant zone entity within the Mitchell Shire area |
+| Setting | Description | Default |
+|---------|-------------|---------|
+| **Zone** | A Home Assistant zone entity within the Mitchell Shire area | `zone.home` |
+| **Bin refresh interval** | How often to refresh bin collection schedules (hours, 1–168) | `50` |
+| **Enable council events** | Create sensors and a calendar for upcoming council events | `true` |
+| **Enable council news** | Create a sensor for the latest council news | `true` |
 
-Data is refreshed every **4 hours**.
+| Data | Refresh schedule |
+|------|-----------------|
+| Bin collection schedules | Every **50 hours** (configurable) |
+| Council events & news | Every **120 minutes** |
+
+The bin interval can be changed after setup via the integration's **Configure** button in Settings → Devices & Services.
 
 ## Troubleshooting
 
@@ -108,7 +116,7 @@ Data is refreshed every **4 hours**.
 Only bin types returned by the council API for your address are created. Not every property has all four bin types.
 
 ### Stale data
-Data updates every 4 hours. To force a refresh, go to **Settings** → **Devices & Services**, find the Mitchell Shire integration, and reload it.
+Bin data refreshes every 50 hours by default (configurable); events and news refresh every 120 minutes. To force an immediate refresh, go to **Settings** → **Devices & Services**, find the Mitchell Shire integration, and reload it.
 
 ### Debug Logging
 ```yaml

@@ -1,0 +1,13 @@
+{
+  "name": "Mitchell Shire Council",
+  "repository": "https://github.com/jamesd/ha-mitchell-shire",
+  "homeassistant": "2023.11.0",
+  "version": "1.0.0",
+  "slug": "mitchell_shire",
+  "description": "Bin collection schedules, council events, and news for Mitchell Shire, Victoria residents.",
+  "documentation": "https://github.com/francis-chiew/ha-mitchell-shire",
+  "issues": "https://github.com/francis-chiew/ha-mitchell-shire/issues",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": []
+}
