@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mitchell Shire 市议会",
+        "description": "选择用于查询您的垃圾收集日程的区域坐标。通常为 **zone.home**。\n\n*此集成与 Mitchell Shire 市议会无关，亦未获其认可。*",
+        "data": {
+          "zone": "区域",
+          "bin_scan_interval": "垃圾桶刷新间隔",
+          "enable_events": "启用议会活动",
+          "enable_news": "启用议会新闻"
+        },
+        "data_description": {
+          "zone": "将向 Mitchell Shire 市议会 API 发送纬度和经度的 Home Assistant 区域。",
+          "bin_scan_interval": "刷新垃圾收集日程的频率（小时）。默认为 50 小时。",
+          "enable_events": "为即将举行的 Mitchell Shire 市议会活动创建传感器和日历。",
+          "enable_news": "为最新 Mitchell Shire 市议会新闻创建传感器。"
+        }
+      }
+    },
+    "error": {
+      "zone_not_found": "在 Home Assistant 中未找到所选区域实体。",
+      "zone_no_coordinates": "所选区域没有纬度/经度属性。"
+    },
+    "abort": {
+      "already_configured": "该区域已配置。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mitchell Shire 市议会选项",
+        "data": {
+          "bin_scan_interval": "垃圾桶刷新间隔",
+          "enable_events": "启用议会活动",
+          "enable_news": "启用议会新闻"
+        },
+        "data_description": {
+          "bin_scan_interval": "刷新垃圾收集日程的频率（小时）。默认为 50 小时。",
+          "enable_events": "为即将举行的 Mitchell Shire 市议会活动创建传感器和日历。",
+          "enable_news": "为最新 Mitchell Shire 市议会新闻创建传感器。"
+        }
+      }
+    }
+  }
+}

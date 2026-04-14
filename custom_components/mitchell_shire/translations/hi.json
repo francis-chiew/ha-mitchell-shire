@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mitchell Shire काउंसिल",
+        "description": "वह ज़ोन चुनें जिसके निर्देशांक आपके कचरा संग्रह कार्यक्रम को खोजने के लिए उपयोग किए जाएंगे। आमतौर पर यह **zone.home** होता है।\n\n*यह इंटीग्रेशन Mitchell Shire काउंसिल से संबद्ध नहीं है और न ही उनके द्वारा अनुमोदित है।*",
+        "data": {
+          "zone": "ज़ोन",
+          "bin_scan_interval": "Bin refresh interval",
+          "enable_events": "Enable council events",
+          "enable_news": "Enable council news"
+        },
+        "data_description": {
+          "zone": "वह Home Assistant ज़ोन जिसके अक्षांश और देशांतर Mitchell Shire काउंसिल API को भेजे जाएंगे।",
+          "bin_scan_interval": "How often to refresh bin collection schedules (hours). Default is 50 hours.",
+          "enable_events": "Create sensors and a calendar for upcoming Mitchell Shire council events.",
+          "enable_news": "Create a sensor for the latest Mitchell Shire council news."
+        }
+      }
+    },
+    "error": {
+      "zone_not_found": "चुनी गई ज़ोन इकाई Home Assistant में नहीं मिली।",
+      "zone_no_coordinates": "चुने गए ज़ोन में अक्षांश/देशांतर विशेषताएं नहीं हैं।"
+    },
+    "abort": {
+      "already_configured": "यह ज़ोन पहले से कॉन्फ़िगर किया गया है।"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mitchell Shire Council Options",
+        "data": {
+          "bin_scan_interval": "Bin refresh interval",
+          "enable_events": "Enable council events",
+          "enable_news": "Enable council news"
+        },
+        "data_description": {
+          "bin_scan_interval": "How often to refresh bin collection schedules (hours). Default is 50 hours.",
+          "enable_events": "Create sensors and a calendar for upcoming Mitchell Shire council events.",
+          "enable_news": "Create a sensor for the latest Mitchell Shire council news."
+        }
+      }
+    }
+  }
+}

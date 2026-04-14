@@ -1,0 +1,5 @@
+aiohttp
+requests
+homeassistant
+pytest
+pytest-asyncio
