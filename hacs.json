@@ -1,6 +1,6 @@
 {
   "name": "Mitchell Shire Council",
-  "repository": "https://github.com/jamesd/ha-mitchell-shire",
+  "repository": "https://github.com/francis-chiew/ha-mitchell-shire",
   "homeassistant": "2023.11.0",
   "version": "1.0.0",
   "slug": "mitchell_shire",
