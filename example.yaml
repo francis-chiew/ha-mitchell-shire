@@ -1,0 +1,61 @@
+# Mitchell Shire — Bin Collection Dashboard Card
+#
+# Shows only bins due within the next 4 days. Each row collapses
+# automatically when that bin is not due soon.
+#
+# Requirements:
+#   - Mushroom Cards (HACS → Frontend)
+#
+# Usage:
+#   Dashboard → Edit → Add Card → Manual → paste this YAML
+
+type: vertical-stack
+cards:
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.general_rubbish
+        attribute: days_until_collection
+        below: 4
+    card:
+      type: custom:mushroom-entity-card
+      entity: sensor.general_rubbish
+      icon_color: red
+      layout: horizontal
+      name: Rubbish Bin
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.food_and_garden_organics
+        attribute: days_until_collection
+        below: 4
+    card:
+      type: custom:mushroom-entity-card
+      entity: sensor.food_and_garden_organics
+      icon_color: green
+      layout: horizontal
+      name: FOGO Bin
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.mixed_recycling
+        attribute: days_until_collection
+        below: 4
+    card:
+      type: custom:mushroom-entity-card
+      entity: sensor.mixed_recycling
+      icon_color: yellow
+      layout: horizontal
+      name: Recycling Bin
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.glass_recycling
+        attribute: days_until_collection
+        below: 4
+    card:
+      type: custom:mushroom-entity-card
+      entity: sensor.glass_recycling
+      icon_color: purple
+      layout: horizontal
+      name: Glass Bin

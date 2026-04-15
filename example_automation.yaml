@@ -1,0 +1,54 @@
+# Mitchell Shire — Bin Collection Reminder Automation
+#
+# Sends a notification at 18:00 the evening before any bin is due for
+# collection. Builds a single message listing all bins due the next day
+# and delivers it to every device in the notify_targets list.
+#
+# Setup:
+#   1. Replace the notify_targets list with your actual notify service(s).
+#      Each entry is a Home Assistant notify service, e.g.:
+#        - notify.mobile_app_my_iphone
+#        - notify.mobile_app_my_pixel
+#      Find yours at Settings → Devices & Services → Integrations → search "mobile_app"
+#
+#   2. Import via Settings → Automations → ⋮ → Import automation, or
+#      paste the content into an automation created via the UI in YAML mode.
+
+automation:
+  alias: Bin collection reminder
+  description: >
+    Notifies all household members at 18:00 the evening before any bin
+    is scheduled for collection.
+  trigger:
+    - platform: time
+      at: "18:00:00"
+  action:
+    - variables:
+        notify_targets:
+          - notify.mobile_app_your_first_phone    # REPLACE with your service
+          - notify.mobile_app_your_second_phone   # REPLACE with your service
+        bins_due: >
+          {% set ns = namespace(bins=[]) %}
+          {% set checks = [
+            ('sensor.general_rubbish',         'Rubbish bin'),
+            ('sensor.food_and_garden_organics', 'FOGO bin'),
+            ('sensor.mixed_recycling',          'Recycling bin'),
+            ('sensor.glass_recycling',          'Glass bin')
+          ] %}
+          {% for entity_id, label in checks %}
+            {% set days = state_attr(entity_id, 'days_until_collection') %}
+            {% if days is not none and days | int == 1 %}
+              {% set ns.bins = ns.bins + [label] %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.bins }}
+    - condition: template
+      value_template: "{{ bins_due | length > 0 }}"
+    - repeat:
+        for_each: "{{ notify_targets }}"
+        sequence:
+          - service: "{{ repeat.item }}"
+            data:
+              title: "Bins out tonight"
+              message: >
+                {{ bins_due | join(' and ') | title }} need to go out tonight.
