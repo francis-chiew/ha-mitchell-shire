@@ -1,7 +1,7 @@
 # Home Assistant Mitchell Shire Council Integration
 
-[![GitHub release](https://img.shields.io/github/release/jamesd/ha-mitchell-shire.svg)](https://github.com/jamesd/ha-mitchell-shire/releases)
-[![License](https://img.shields.io/github/license/jamesd/ha-mitchell-shire.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/github/release/francis-chiew/ha-mitchell-shire.svg)](https://github.com/jamesd/ha-mitchell-shire/releases)
+[![License](https://img.shields.io/github/license/francis-chiew/ha-mitchell-shire.svg)](LICENSE)
 
 A Home Assistant custom integration for residents of Mitchell Shire, Victoria. Provides bin collection schedules, council events, and news — all sourced from the Mitchell Shire Council public API based on your home location.
 
