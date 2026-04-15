@@ -127,6 +127,14 @@ logger:
     custom_components.mitchell_shire: debug
 ```
 
+## Examples
+
+### Dashboard Card
+[`example.yaml`](example.yaml) — A vertical-stack card that shows only the bins due within the next 4 days. Each bin row collapses automatically when not due soon. Requires [Mushroom Cards](https://github.com/piitaya/lovelace-mushroom).
+
+### Bin Reminder Automation
+[`example_automation.yaml`](example_automation.yaml) — Sends a notification at 18:00 the evening before any bin is due. Delivers a single grouped message (e.g. "Rubbish bin and FOGO bin need to go out tonight") to all devices in a configurable list.
+
 ## Contributing
 
 Contributions are welcome. Please open an issue or pull request on [GitHub](https://github.com/jamesd/ha-mitchell-shire).
