@@ -1,6 +1,6 @@
 # Home Assistant Mitchell Shire Council Integration
 
-[![GitHub release](https://img.shields.io/github/release/francis-chiew/ha-mitchell-shire.svg)](https://github.com/jamesd/ha-mitchell-shire/releases)
+[![GitHub release](https://img.shields.io/github/release/francis-chiew/ha-mitchell-shire.svg)](https://github.com/francis-chiew/ha-mitchell-shire/releases)
 [![License](https://img.shields.io/github/license/francis-chiew/ha-mitchell-shire.svg)](LICENSE)
 
 A Home Assistant custom integration for residents of Mitchell Shire, Victoria. Provides bin collection schedules, council events, and news — all sourced from the Mitchell Shire Council public API based on your home location.
@@ -34,12 +34,12 @@ A Home Assistant custom integration for residents of Mitchell Shire, Victoria. P
 1. Open HACS in Home Assistant
 2. Go to **Integrations**
 3. Click the three-dot menu and select **Custom repositories**
-4. Add `https://github.com/jamesd/ha-mitchell-shire` with category **Integration**
+4. Add `https://github.com/francis-chiew/ha-mitchell-shire` with category **Integration**
 5. Find and install **Mitchell Shire Council**
 6. Restart Home Assistant
 
 #### Manual
-1. Download the latest release from [GitHub](https://github.com/jamesd/ha-mitchell-shire/releases)
+1. Download the latest release from [GitHub](https://github.com/francis-chiew/ha-mitchell-shire/releases)
 2. Copy the `custom_components/mitchell_shire/` folder into your HA `config/custom_components/` directory
 3. Restart Home Assistant
 
@@ -145,7 +145,7 @@ logger:
 
 ## Contributing
 
-Contributions are welcome. Please open an issue or pull request on [GitHub](https://github.com/jamesd/ha-mitchell-shire).
+Contributions are welcome. Please open an issue or pull request on [GitHub](https://github.com/francis-chiew/ha-mitchell-shire).
 
 ## License
 
@@ -153,8 +153,8 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Support
 
-- **Bug Reports**: [GitHub Issues](https://github.com/jamesd/ha-mitchell-shire/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/jamesd/ha-mitchell-shire/discussions)
+- **Bug Reports**: [GitHub Issues](https://github.com/francis-chiew/ha-mitchell-shire/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/francis-chiew/ha-mitchell-shire/discussions)
 - **Community**: [Home Assistant Community Forum](https://community.home-assistant.io/)
 
 ---
