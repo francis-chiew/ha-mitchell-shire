@@ -6,6 +6,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
 
+import aiohttp
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -233,7 +234,7 @@ class EventsNewsCoordinator(DataUpdateCoordinator[EventsNewsData]):
 async def _fetch(session, url: str) -> dict:
     """Fetch a single API endpoint and return the parsed JSON."""
     try:
-        async with session.get(url, timeout=30) as response:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
             if response.status != 200:
                 raise UpdateFailed(f"API request to {url} failed with HTTP {response.status}")
             return await response.json(content_type=None)
