@@ -24,9 +24,6 @@ automation:
       at: "18:00:00"
   action:
     - variables:
-        notify_targets:
-          - notify.mobile_app_your_first_phone    # REPLACE with your service
-          - notify.mobile_app_your_second_phone   # REPLACE with your service
         bins_due: >
           {% set ns = namespace(bins=[]) %}
           {% set checks = [
@@ -43,11 +40,12 @@ automation:
           {{ ns.bins }}
     - condition: template
       value_template: "{{ bins_due | length > 0 }}"
-    - repeat:
-        for_each: "{{ notify_targets }}"
-        sequence:
-          - service: "{{ repeat.item }}"
-            data:
-              title: "Bins out tonight"
-              message: >
-                {{ bins_due | join(' and ') | title }} need to go out tonight.
+    - service: notify.mobile_app_your_first_phone    # REPLACE with your service
+      data:
+        title: "Bins out tonight"
+        message: "{{ bins_due | join(' and ') | title }} need to go out tonight."
+    # Add more service calls below for additional devices (delete if not needed):
+    # - service: notify.mobile_app_your_second_phone
+    #   data:
+    #     title: "Bins out tonight"
+    #     message: "{{ bins_due | join(' and ') | title }} need to go out tonight."
