@@ -56,16 +56,24 @@ Entities are created automatically based on what the API returns for your locati
 
 ### Sensors
 
+Entity IDs are derived from the bin title returned by the council API. For most Mitchell Shire addresses:
+
 | Entity | Description |
 |--------|-------------|
-| `sensor.{zone}_red_bin` | Next red bin (general waste) collection date |
-| `sensor.{zone}_green_bin` | Next green bin (garden/organic) collection date |
-| `sensor.{zone}_yellow_bin` | Next yellow bin (recycling) collection date |
-| `sensor.{zone}_purple_bin` | Next purple bin (glass) collection date |
-| `sensor.{zone}_next_event` | Title of the next upcoming council event |
-| `sensor.{zone}_latest_news` | Latest council news headline |
+| `sensor.general_rubbish` | Next red bin (general waste) collection date |
+| `sensor.food_and_garden_organics` | Next green bin (FOGO) collection date |
+| `sensor.mixed_recycling` | Next yellow bin (recycling) collection date |
+| `sensor.glass_recycling` | Next purple bin (glass) collection date |
+| `sensor.general_rubbish_days` | Days until next red bin collection (integer) |
+| `sensor.food_and_garden_organics_days` | Days until next FOGO collection (integer) |
+| `sensor.mixed_recycling_days` | Days until next recycling collection (integer) |
+| `sensor.glass_recycling_days` | Days until next glass collection (integer) |
+| `sensor.next_event` | Title of the next upcoming council event |
+| `sensor.latest_news` | Latest council news headline |
 
-Bin sensors use the `DATE` device class and include these extra attributes:
+The `_days` countdown sensors report an integer state (days until collection) and are the recommended entity to use in conditional dashboard cards and automations — no attribute lookup needed.
+
+Date sensors (`DATE` device class) include these extra attributes:
 
 | Attribute | Description |
 |-----------|-------------|

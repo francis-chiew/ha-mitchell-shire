@@ -14,8 +14,7 @@ cards:
   - type: conditional
     conditions:
       - condition: numeric_state
-        entity: sensor.general_rubbish
-        attribute: days_until_collection
+        entity: sensor.general_rubbish_days
         below: 4
     card:
       type: custom:mushroom-entity-card
@@ -26,8 +25,7 @@ cards:
   - type: conditional
     conditions:
       - condition: numeric_state
-        entity: sensor.food_and_garden_organics
-        attribute: days_until_collection
+        entity: sensor.food_and_garden_organics_days
         below: 4
     card:
       type: custom:mushroom-entity-card
@@ -38,8 +36,7 @@ cards:
   - type: conditional
     conditions:
       - condition: numeric_state
-        entity: sensor.mixed_recycling
-        attribute: days_until_collection
+        entity: sensor.mixed_recycling_days
         below: 4
     card:
       type: custom:mushroom-entity-card
@@ -50,8 +47,7 @@ cards:
   - type: conditional
     conditions:
       - condition: numeric_state
-        entity: sensor.glass_recycling
-        attribute: days_until_collection
+        entity: sensor.glass_recycling_days
         below: 4
     card:
       type: custom:mushroom-entity-card

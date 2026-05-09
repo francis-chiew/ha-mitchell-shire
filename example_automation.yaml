@@ -30,14 +30,13 @@ automation:
         bins_due: >
           {% set ns = namespace(bins=[]) %}
           {% set checks = [
-            ('sensor.general_rubbish',         'Rubbish bin'),
-            ('sensor.food_and_garden_organics', 'FOGO bin'),
-            ('sensor.mixed_recycling',          'Recycling bin'),
-            ('sensor.glass_recycling',          'Glass bin')
+            ('sensor.general_rubbish_days',         'Rubbish bin'),
+            ('sensor.food_and_garden_organics_days', 'FOGO bin'),
+            ('sensor.mixed_recycling_days',          'Recycling bin'),
+            ('sensor.glass_recycling_days',          'Glass bin')
           ] %}
           {% for entity_id, label in checks %}
-            {% set days = state_attr(entity_id, 'days_until_collection') %}
-            {% if days is not none and days | int == 1 %}
+            {% if states(entity_id) | int(-1) == 1 %}
               {% set ns.bins = ns.bins + [label] %}
             {% endif %}
           {% endfor %}

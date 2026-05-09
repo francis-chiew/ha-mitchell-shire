@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from datetime import date
 
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
+from homeassistant.components.sensor import SensorDeviceClass, SensorEntity, SensorStateClass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -35,10 +35,10 @@ async def async_setup_entry(
     bin_coordinator: BinCoordinator = coordinators["bin"]
     events_news_coordinator: EventsNewsCoordinator | None = coordinators["events_news"]
 
-    entities: list[SensorEntity] = [
-        BinSensor(bin_coordinator, entry.entry_id, color)
-        for color in bin_coordinator.data
-    ]
+    entities: list[SensorEntity] = []
+    for color in bin_coordinator.data:
+        entities.append(BinSensor(bin_coordinator, entry.entry_id, color))
+        entities.append(BinCountdownSensor(bin_coordinator, entry.entry_id, color))
 
     if events_news_coordinator is not None:
         enable_events = entry.options.get(CONF_ENABLE_EVENTS, entry.data.get(CONF_ENABLE_EVENTS, DEFAULT_ENABLE_EVENTS))
@@ -103,6 +103,43 @@ class BinSensor(CoordinatorEntity[BinCoordinator], SensorEntity):
             "upcoming_collections": bin_data.upcoming_iso,
             "description": bin_data.description,
         }
+
+
+class BinCountdownSensor(CoordinatorEntity[BinCoordinator], SensorEntity):
+    """Days until next collection for one bin type — numeric state for conditional cards."""
+
+    _attr_attribution = ATTRIBUTION
+    _attr_has_entity_name = True
+    _attr_native_unit_of_measurement = "d"
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_icon = "mdi:counter"
+
+    def __init__(
+        self,
+        coordinator: BinCoordinator,
+        entry_id: str,
+        color: str,
+    ) -> None:
+        super().__init__(coordinator)
+        self._color = color
+        self._attr_unique_id = f"{entry_id}_{color}_days_until"
+
+    @property
+    def _bin(self) -> BinData | None:
+        if self.coordinator.data is None:
+            return None
+        return self.coordinator.data.get(self._color)
+
+    @property
+    def name(self) -> str:
+        bin_data = self._bin
+        title = bin_data.title if bin_data else self._color.capitalize()
+        return f"{title} Days"
+
+    @property
+    def native_value(self) -> int | None:
+        bin_data = self._bin
+        return bin_data.days_until_next if bin_data else None
 
 
 # ---------------------------------------------------------------------------
